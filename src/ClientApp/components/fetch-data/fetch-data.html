@@ -3,7 +3,13 @@
 <p>This component demonstrates fetching data from the server.</p>
 
 <p *ngIf="!forecasts"><em>Loading...</em></p>
+<input type="text" [(ngModel)]="tempFilter" />
 
+<div class='row'>
+    <div class='col-md-6'>
+        <h3>Filtered tempratur less than: {{tempFilter}}</h3>
+    </div>
+</div>
 <table class='table' *ngIf="forecasts">
     <thead>
         <tr>
@@ -14,11 +20,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let forecast of forecasts">
+        <tr *ngFor="let forecast of forecasts | temperatureCFilter:tempFilter ">
             <td>{{ forecast.dateFormatted }}</td>
             <td>{{ forecast.temperatureC }}</td>
             <td>{{ forecast.temperatureF }}</td>
-            <td>{{ forecast.summary }}</td>
+            <td>{{ forecast.summary | lowercase}}</td>
         </tr>
     </tbody>
 </table>
