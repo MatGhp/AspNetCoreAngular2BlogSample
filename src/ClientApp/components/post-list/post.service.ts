@@ -1,6 +1,7 @@
 ﻿import {Injectable} from '@angular/core';
 import {IPost} from './Post';
-import {Http, Response} from '@angular/http';
+//import {Http, Response} from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable'
 
 
@@ -8,17 +9,35 @@ import { Observable } from 'rxjs/Observable'
 export class PostService
 {
     private _postUrl = '/api/post';
-
-    constructor(private _http: Http)
+    private _http: Http;
+    constructor(http: Http)
     {
-
+        this._http = http;
     }
-    getPosts(): Observable<IPost[]>
+
+    //constructor(http: Http)
+    //{
+    //    http.get('api/post')
+    //        .do(result => console.log(JSON.stringify(result)))
+    //        .subscribe(result =>
+    //    {
+    //        this.posts = result.json();
+    //    });
+    //}
+    getPosts(): IPost[]//: Observable<IPost[]>
     {
-        return this._http.get(this._postUrl)
-            .map((response: Response) => <IPost[]>response.json())
-            .do(data => console.log("All : " + JSON.stringify(data)))
-            .catch(this.HandelError);
+        let posts: IPost[];
+        this._http.get('api/post')
+            .do(result => console.log(JSON.stringify(result)))
+            .subscribe(result =>
+            {
+                posts = result.json();
+            });
+        return posts;
+        //return this._http.get(this._postUrl)
+        //    .map((response: Response) => <IPost[]>response.json())
+        //    .do(data => console.log("All : " + JSON.stringify(data)))
+        //    .catch(this.HandelError);
     }
 
     private HandelError(error: Response)

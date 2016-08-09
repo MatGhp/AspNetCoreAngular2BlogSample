@@ -6,5 +6,13 @@
     userId: string;
     username: string;
     email: string;
+    comments: IComment[];
+}
 
+export interface IComment
+{
+    id: number;
+    body: string;
+    username: string;
+    email: string;
 }

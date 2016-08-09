@@ -5,15 +5,12 @@ using System.Threading.Tasks;
 
 namespace AspNetCoreAngular2Blog.Models.ViewModel
 {
-    public class PostViewModel
+    public class CommentViewModel
     {
         public int Id { set; get; }
-        public string Title { set; get; }
         public string Body { set; get; }
-        public string UserId { set; get; }
         public string Username { set; get; }
         public string Email { set; get; }
-        public List<CommentViewModel> Comments { set; get; }
-
     }
 }
+

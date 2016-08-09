@@ -18,16 +18,45 @@ namespace AspNetCoreAngular2Blog.Controllers
                     Title="Title_1 from WebAPI Service",
                     Body="Progressive Web Apps :  Use modern web platform capabilities to deliver app-like experiences. High performance, offline and zero-step installation.",
                     Email="a@b.com",
-                    Username="George"
+                    Username="George",
+                    Comments = new List<CommentViewModel> {
+                    new CommentViewModel {
+                        Id=11,
+                        Body="Comment #2 .......",
+                        Email="s@f.com",
+                        Username="user11"
+                    },
+                    new CommentViewModel {
+                        Id=12,
+                        Body="Comment #2 ...........",
+                        Email="f@g.com",
+                        Username="user 12"
+                    },
+                    new CommentViewModel {
+                        Id=13,
+                        Body="Comment #3",
+                        Email="d@a.com",
+                        Username="user 13"
+                    }
+                }
                 },
                 new PostViewModel {
                     Id=23,
                     Title="Title_2 from WebAPI Service",
                     Body="Native : Build native mobile apps with strategies from Ionic Framework, NativeScript, and React Native.",
                     Email="c@d.com",
-                    Username="Matt"
+                    Username="Matt",
+                    Comments = new List<CommentViewModel> {
+                         new CommentViewModel {
+                        Id=14,
+                        Body="Comment #4...........",
+                        Email="s@m.com",
+                        Username="user 14"
+                    }
                 }
-            };
+                }
+        };
+
         // GET: api/Post
         [HttpGet]
         public IEnumerable<PostViewModel> Get()
