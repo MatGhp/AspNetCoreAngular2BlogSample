@@ -9,8 +9,8 @@ using AspNetCoreAngular2Blog.Models.ViewModel;
 
 namespace AspNetCoreAngular2Blog.Controllers
 {
-    [Route("api/[controller]")]
-    public class PostController : Controller
+    [Route("api/posts")]
+    public class PostsController : Controller
     {
         List<PostViewModel> _posts = new List<PostViewModel> {
                 new PostViewModel {
@@ -22,25 +22,28 @@ namespace AspNetCoreAngular2Blog.Controllers
                     Comments = new List<CommentViewModel> {
                     new CommentViewModel {
                         Id=11,
-                        Body="Comment #2 .......",
+                        Body="Comment body #1111 .......",
                         Email="s@f.com",
-                        Username="user11"
+                        Username="user11",
+                        PostId = 22
                     },
                     new CommentViewModel {
                         Id=12,
-                        Body="Comment #2 ...........",
+                        Body="Comment #22222 ...........",
                         Email="f@g.com",
-                        Username="user 12"
+                        Username="user 12",
+                        PostId = 22
                     },
                     new CommentViewModel {
                         Id=13,
-                        Body="Comment #3",
+                        Body="Comment #33333333 XXXX",
                         Email="d@a.com",
-                        Username="user 13"
+                        Username="user 13",
+                        PostId = 22
                     }
                 }
                 },
-                new PostViewModel {
+                  new PostViewModel {
                     Id=23,
                     Title="Title_2 from WebAPI Service",
                     Body="Native : Build native mobile apps with strategies from Ionic Framework, NativeScript, and React Native.",
@@ -51,7 +54,8 @@ namespace AspNetCoreAngular2Blog.Controllers
                         Id=14,
                         Body="Comment #4...........",
                         Email="s@m.com",
-                        Username="user 14"
+                        Username="user 14",
+                        PostId = 23
                     }
                 }
                 }
@@ -62,6 +66,26 @@ namespace AspNetCoreAngular2Blog.Controllers
         public IEnumerable<PostViewModel> Get()
         {
             return _posts;
+        }
+
+        [Route("{postId:int}/Comments")]
+        [HttpGet("{postId}")]
+        public IActionResult FindcommentsOfPost(int postId)
+        {
+            var post = _posts.FirstOrDefault(p => p.Id == postId);
+            if (post != null && post.Comments.Count > 0)
+            {
+                return new ObjectResult(post.Comments.Select(c => new
+                {
+                    id = c.Id,
+                    body = c.Body,
+                    email = c.Email,
+                    username = c.Username,
+                    postId = postId
+
+                }));
+            }
+            else return NotFound();
         }
 
         // GET api/Post/5
@@ -78,8 +102,11 @@ namespace AspNetCoreAngular2Blog.Controllers
 
         // POST api/Post
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]PostViewModel post)
         {
+            post.Id = _posts.Max(p => p.Id) + 1;
+            _posts.Add(post);
+            return new OkObjectResult(post);
         }
 
         // PUT api/Post/5
@@ -93,5 +120,7 @@ namespace AspNetCoreAngular2Blog.Controllers
         public void Delete(int id)
         {
         }
+
+
     }
 }

@@ -11,6 +11,7 @@ namespace AspNetCoreAngular2Blog.Models.ViewModel
         public string Body { set; get; }
         public string Username { set; get; }
         public string Email { set; get; }
+        public int PostId { set; get; }
     }
 }
 

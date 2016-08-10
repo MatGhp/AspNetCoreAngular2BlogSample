@@ -6,7 +6,7 @@
     userId: string;
     username: string;
     email: string;
-    comments: IComment[];
+   // comments: IComment[];
 }
 
 export interface IComment
@@ -15,4 +15,5 @@ export interface IComment
     body: string;
     username: string;
     email: string;
+    postId: number;
 }

@@ -3,7 +3,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { NavMenu } from '../nav-menu/nav-menu';
 //import { IPost } from '../post-list/Post';
-//import { PostService } from '../post-list/post.service';
+import { PostService } from '../posts/post.service';
 //import { PostList } from '../post-list/post-list';
 import { StarComponent } from '../shared/star';
 import 'rxjs/Rx';
@@ -13,7 +13,7 @@ import 'rxjs/Rx';
     template: require('./app.html'),
     directives: [...ROUTER_DIRECTIVES, NavMenu, StarComponent],
     providers: [
-        //PostService,
+        PostService,
         HTTP_PROVIDERS
     ]
 })

@@ -11,15 +11,21 @@
     </div>
 
 </div>
-{{post.comments | json}}
-<!--<div *ngIf="post.comments">
-    <div *ngFor="let comment of post.comments | json">
+
+<div *ngIf="comments.length > 0">
+    <div *ngFor="let comment of comments">
         <div class="panel panel-default">
-            <div class="panel-heading"> </div>
+            <div class="panel-heading">
+
+                <div class="row">
+                    <div class="col-md-6">Comment by: {{comment.username}}</div>
+                    <div class="col-md-6">Email: {{comment.email}}</div>
+                </div>
+            </div>
             <div class="panel-body">
                 <article><div [innerHTML]="comment.body"></div></article>
             </div>
 
         </div>
     </div>
-</div>-->
+</div>
