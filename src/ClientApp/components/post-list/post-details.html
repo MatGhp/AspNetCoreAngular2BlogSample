@@ -11,7 +11,7 @@
     </div>
 
 </div>
-{{post.comments.length}}
+{{post.comments | json}}
 <!--<div *ngIf="post.comments">
     <div *ngFor="let comment of post.comments | json">
         <div class="panel panel-default">

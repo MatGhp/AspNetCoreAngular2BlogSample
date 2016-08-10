@@ -22,7 +22,7 @@ export class PostList implements ng.OnInit
         //this._postService = new PostService(http);
         //this.posts = this._postService.getPosts();
         http.get('api/post')
-            .map(data => <IPost[]>data.json())
+            .map(data => data.json())
             
             //.do(result => console.log(result)))
             //.catch(this.HandelError)

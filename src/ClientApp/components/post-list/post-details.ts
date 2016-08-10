@@ -13,7 +13,8 @@ import {IPost, IComment} from './Post';
 export class PostDetails implements OnInit, OnDestroy
 {
     private _id: number = -1;
-    private post: IPost;
+    private post = <IPost>{};
+    
     private sub: any;
     public pageTitle: string = 'Post View';
     constructor(private _route: ActivatedRoute, private _router: Router, private _http: Http)
@@ -36,6 +37,7 @@ export class PostDetails implements OnInit, OnDestroy
             .subscribe(content =>
             {
                 this.post = content;
+                
                 //this.post.comments = content.comments as IComment[]
                 console.log('comments: '+JSON.stringify(content.comments as IComment[]))
                     //_.chain(_.toPairs(JSON.parse(content.toString())))
