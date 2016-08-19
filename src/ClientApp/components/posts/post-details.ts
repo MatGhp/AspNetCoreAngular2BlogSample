@@ -4,9 +4,10 @@ import {Http} from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import {IPost, IComment} from './Post';
 import {PostService} from './post.service';
-
+import {AddComment} from './add-comment';
 @Component({
-    template: require('./post-details.html')
+    template: require('./post-details.html'),
+    directives: [AddComment]
 })
 export class PostDetails implements OnInit, OnDestroy
 {
