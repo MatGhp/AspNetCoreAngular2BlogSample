@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using AspNetCoreAngular2Blog.Models.DB;
 using Microsoft.EntityFrameworkCore;
+using AspNetCoreAngular2Blog.Migrations;
+
 namespace AspNetCoreAngular2Blog
 {
     public class Startup
@@ -36,18 +38,21 @@ namespace AspNetCoreAngular2Blog
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:ApplicationDbContextConnection"]);
             });
+            //services.AddDbContext<ApplicationDbContext>(ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory,
+            IServiceScopeFactory scopeFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            scopeFactory.SeedData();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
                     HotModuleReplacement = true
                 });
             }
