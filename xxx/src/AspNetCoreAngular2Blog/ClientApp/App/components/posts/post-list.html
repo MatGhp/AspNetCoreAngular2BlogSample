@@ -1,0 +1,36 @@
+﻿
+<div class="container">
+    <div class="row">
+        <h3>{{pageTitle}}</h3>
+
+        {{errorMessage}}
+
+        <hr />
+
+        <div class="col-md-10">
+            <div id="divPost" *ngFor="let post of posts">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a [routerLink]="['/post-details',post.id]"> {{post.title}}</a>
+                    </div>
+                    <div class="panel-body">
+                        <article><div [innerHTML]="post.body"></div></article>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-4">Author : <a href="#"> {{post.username}}</a></div>
+                            <div class="col-md-4">Email: {{post.email}}</div>
+                            <div class="col-md-4">Post# {{post.id}}</div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

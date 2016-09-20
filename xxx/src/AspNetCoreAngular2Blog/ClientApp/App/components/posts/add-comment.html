@@ -1,0 +1,30 @@
+﻿<div class="container">
+    <h1>Leave a comment</h1>
+    {{diagnostic}}
+    <!--(ngSubmit)="onSubmit(commentForm.form)" #commentForm="ngModel">-->
+    <form #f="ngModel" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" required
+                   [(ngModel)]="model.email" name="email" />
+
+            TODO: remove this: {{model.email}}
+            <!--<div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                Email is required
+            </div>-->
+        </div>
+        <div class="form-group">
+            <label for="username">Your name: </label>
+            <input type="text" class="form-control" id="username"
+                   [(ngModel)]="model.username" name="username" />
+            TODO: remove this: {{model.username}}
+        </div>
+        <div class="form-group">
+            <label for="body">Body</label>
+            <input type="text" class="form-control" id="body"
+                   [(ngModel)]="model.body" name="body" />
+            TODO: remove this: {{model.body}}
+        </div>
+        <button type="submit" class="btn btn-default"  [disabled]="!commentForm.form.valid">Submit</button>
+    </form>
+</div>

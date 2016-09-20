@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B4EE970D-81D6-47A4-8636-0D1AD81B7F17}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "src", "src", "{46F3AFF5-E2FC-4AF1-8B9F-E8E4D8243B87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4B2E7FE-0BBA-4453-8DE2-BEF72D3C19C8}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,6 +18,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46F3AFF5-E2FC-4AF1-8B9F-E8E4D8243B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46F3AFF5-E2FC-4AF1-8B9F-E8E4D8243B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46F3AFF5-E2FC-4AF1-8B9F-E8E4D8243B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46F3AFF5-E2FC-4AF1-8B9F-E8E4D8243B87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2FAA0B47-C7AC-4B82-80EC-81D573DE3C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2FAA0B47-C7AC-4B82-80EC-81D573DE3C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FAA0B47-C7AC-4B82-80EC-81D573DE3C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -25,8 +29,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{2FAA0B47-C7AC-4B82-80EC-81D573DE3C68} = {B4EE970D-81D6-47A4-8636-0D1AD81B7F17}
 	EndGlobalSection
 EndGlobal
