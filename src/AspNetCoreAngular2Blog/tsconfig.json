@@ -1,21 +1,8 @@
-//{
-//  "compilerOptions": {
-//    "moduleResolution": "node",
-//    "target": "es5",
-//    "sourceMap": true,
-//    "experimentalDecorators": true,
-//    "emitDecoratorMetadata": true,
-//    "skipDefaultLibCheck": true
-//  },
-//  "exclude": [
-//    "node_modules"
-//  ]
-//}
-
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    
     "target": "es5",
+    "module": "commonjs",
     "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -23,6 +10,11 @@
     "lib": [ "es6", "dom" ],
     "types": [ "node" ]
   },
-  "exclude": [ "bin", "node_modules" ],
+  "exclude": [
+    "node_modules",
+    "bin",
+    "typings/es6-shim/es6-shim.d.ts",
+    "typings/tsd.d.ts"
+  ],
   "atom": { "rewriteTsconfig": false }
 }

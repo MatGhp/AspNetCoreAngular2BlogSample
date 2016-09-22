@@ -1,15 +1,15 @@
 ﻿//import * as ng from '@angular/core';
-import { Component, OnInit, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import {NgModule, Component, OnInit, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import {Http} from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import {IPost, IComment} from './Post';
-import {PostService} from './post.service';
-import {AddComment} from './add-comment';
+import {IPost, IComment} from '../../models/blog.model';
+import {PostService} from '../../services/post.service';
+
 @Component({
-    template: require('./post-details.html'),
-    directives: [AddComment]
+    template: require('./post-details.component.html')
+    
 })
-export class PostDetails implements OnInit, OnDestroy
+export class PostDetailsComponent implements OnInit, OnDestroy
 {
     public pageTitle: string = 'Post View'
     private _postId: number = -1;
@@ -38,12 +38,12 @@ export class PostDetails implements OnInit, OnDestroy
             {
                 this.post = post;
             });
-        this._postService
-            .getComments(this._postId)
-            .subscribe(comments =>
-            {
-                this.comments = comments;
-            });
+        //this._postService
+        //    .getComments(this._postId)
+        //    .subscribe(comments =>
+        //    {
+        //        this.comments = comments;
+        //    });
     }
 
     ngOnDestroy(): void

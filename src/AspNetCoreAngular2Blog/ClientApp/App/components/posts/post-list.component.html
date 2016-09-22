@@ -1,13 +1,17 @@
-﻿<h3>{{pageTitle}}</h3>
+﻿
 <div class="container">
     <div class="row">
+        <h3>{{pageTitle}}</h3>
+
+        {{errorMessage}}
+
         <hr />
 
         <div class="col-md-10">
             <div id="divPost" *ngFor="let post of posts">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a href="#"> {{post.title}}</a>
+                        <a [routerLink]="['/post-details',post.id]"> {{post.title}}</a>
                     </div>
                     <div class="panel-body">
                         <article><div [innerHTML]="post.body"></div></article>

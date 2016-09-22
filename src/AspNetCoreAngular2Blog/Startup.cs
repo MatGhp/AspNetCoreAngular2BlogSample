@@ -50,6 +50,7 @@ namespace AspNetCoreAngular2Blog
             scopeFactory.SeedData();
             if (env.IsDevelopment())
             {
+                app.UseDatabaseErrorPage();
                 app.UseDeveloperExceptionPage();
                 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
                 {

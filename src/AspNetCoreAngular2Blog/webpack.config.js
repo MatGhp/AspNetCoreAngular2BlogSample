@@ -9,7 +9,7 @@ var isDevelopment = process.env.ASPNETCORE_ENVIRONMENT === 'Development';
 
 module.exports = merge({
     resolve: {
-        extensions: ['', '.js', '.ts']
+        extensions: [ '', '.js', '.ts' ]
     },
     module: {
         loaders: [

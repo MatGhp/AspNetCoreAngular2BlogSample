@@ -1,4 +1,4 @@
-﻿import {IPost} from './Post';
+﻿import {IPost, IComment} from '../models/blog.model';
 import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
 //import { Observable }     from 'rxjs/Observable';
@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 export class PostService
 {
     private _postUrl = '/api/post';
+    private _commentUrl = '/api/comment';
     public posts: IPost[];
     constructor(private _http: Http)
     {
@@ -21,6 +22,17 @@ export class PostService
             .do(data => console.log("All : " + JSON.stringify(data)))
             .catch(this.HandelError);
     }
+
+    getPost(postId: number): Observable<IPost>
+    {
+        return this._http.get(this._postUrl + `/${postId}`)
+            .map((response: Response) => <IPost>response.json())
+            .do(data => console.log("All : " + JSON.stringify(data)))
+            .catch(this.HandelError);
+    }
+
+
+    //getComments
 
     private extractData(res: Response)
     {

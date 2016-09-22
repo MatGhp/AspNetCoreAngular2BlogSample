@@ -1,11 +1,11 @@
 ﻿import {Component} from '@angular/core';
-import {IComment} from './Post';
-import {FORM_DIRECTIVES, FormBuilder, Validators } from '@angular/forms';
+import {IComment} from '../../models/blog.model';
+import { FormBuilder, Validators } from '@angular/forms';
 @Component({
     selector: 'add-comment',
-    template: require('./add-comment.html')
+    template: require('./add-comment.component.html')
 })
-export class AddComment
+export class AddCommentComponent
 {
     model: IComment;
     constructor()
