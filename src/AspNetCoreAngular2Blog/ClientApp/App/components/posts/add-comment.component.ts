@@ -1,19 +1,19 @@
 ﻿import {Component} from '@angular/core';
 import {IComment} from '../../models/blog.model';
-import { FormBuilder, Validators } from '@angular/forms';
+import { NgForm, Validators } from '@angular/forms';
 @Component({
     selector: 'add-comment',
     template: require('./add-comment.component.html')
 })
 export class AddCommentComponent
 {
-    model: IComment;
+    comment: IComment;
     constructor()
     {
-        this.model= { body: 'bbbb', email: 'a@b.com', username: 'uuuu', id: 11, postId: 123 };
+        this.model= { body: 'bbbbxxxxxxxxxxxx', email: 'a@b.com', username: 'uuuu', id: 11, postId: 123 };
     }
     submitted = false;
-    onSubmit()
+    onSubmit(form : NgForm)
     {
         this.submitted = true;
     }

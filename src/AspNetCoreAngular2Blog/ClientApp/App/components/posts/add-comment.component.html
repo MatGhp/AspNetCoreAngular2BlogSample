@@ -2,7 +2,7 @@
     <h1>Leave a comment</h1>
     {{diagnostic}}
     <!--(ngSubmit)="onSubmit(commentForm.form)" #commentForm="ngModel">-->
-    <form #f="ngModel" (ngSubmit)="onSubmit()">
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="text" class="form-control" id="email" required

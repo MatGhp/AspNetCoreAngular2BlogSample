@@ -1,4 +1,5 @@
-﻿import { NgModule } from '@angular/core';
+﻿import { BrowserModule} from '@angular/plateform-browser';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UniversalModule } from 'angular2-universal';
 import { AppComponent } from './components/app/app.component'
@@ -21,6 +22,7 @@ import {PostService} from './services/post.service';
     providers: [PostService],
     imports: [
         UniversalModule,
+        BrowserModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
