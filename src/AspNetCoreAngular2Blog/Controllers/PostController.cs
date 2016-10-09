@@ -12,10 +12,10 @@ namespace AspNetCoreAngular2Blog.Controllers
     [Route("api/posts")]
     public class PostsController : Controller
     {
-        private readonly ApplicationDbContext _ctx;
-        public PostsController(ApplicationDbContext ctx)
+       // private readonly ApplicationDbContext _ctx;
+        public PostsController()//(ApplicationDbContext ctx)
         {
-            _ctx = ctx;
+           // _ctx = ctx;
 
         }
         List<PostViewModel> _posts = new List<PostViewModel> {

@@ -8,8 +8,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PostService
 {
-    private _postUrl = '/api/post';
-    private _commentUrl = '/api/comment';
+    private _postUrl = '/api/posts';
+    //private _commentUrl = '/api/comment';
     public posts: IPost[];
     constructor(private _http: Http)
     {
@@ -25,7 +25,7 @@ export class PostService
 
     getPost(postId: number): Observable<IPost>
     {
-        return this._http.get(this._postUrl + `/${postId}`)
+        return this._http.get(`/api/posts/${postId}`)
             .map((response: Response) => <IPost>response.json())
             .do(data => console.log("All : " + JSON.stringify(data)))
             .catch(this.HandelError);
