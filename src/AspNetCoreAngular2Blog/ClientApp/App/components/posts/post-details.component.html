@@ -1,6 +1,6 @@
 ﻿
 <div class="panel panel-primary" *ngIf="post">
-    <div class="panel-heading">    {{post.title}}</div>
+    <div class="panel-heading">  Title  {{post.title}}</div>
     <div class="panel-body">
         <article><div [innerHTML]="post.body"></div></article>
     </div>
@@ -8,26 +8,13 @@
         <a class="btn btn-default" (click)="onBack">
             <i class='glyphicon glyphicon-chevron-left'></i> Back
         </a>
-
+        
     </div>
 
 </div>
-
 <div *ngIf="comments.length > 0">
-    <div *ngFor="let comment of comments">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-
-                <div class="row">
-                    <div class="col-md-6">Comment by: {{comment.username}}</div>
-                    <div class="col-md-6">Email: {{comment.email}}</div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <article><div [innerHTML]="comment.body"></div></article>
-            </div>
-
-        </div>
+    <div *ngFor="let comment of comments" id="CommentDiv">
+        <comment [comment]='comment'></comment>
     </div>
 </div>
-<add-comment></add-comment>
+<add-comment [postid]='post.id' (NewComment)='onNewComment($event)'></add-comment>
