@@ -6,7 +6,12 @@ import {IComment} from '../../models/blog.model';
 @
 Component({
     selector: 'add-comment',
-    template: require('./add-comment.component.html')
+    template: require('./add-comment.component.html'),
+styles:[`form {
+    padding:  10px;
+    background: #ECF0F1;
+    border-radius: 3px;
+}`]
     //styles: require('../shared/forms.css')
 })
 export class AddCommentComponent{
@@ -20,7 +25,7 @@ export class AddCommentComponent{
 
 constructor()
     {
-        this.comment= { body: 'bbbbxxxxxxxxxxxx', email: 'a@b.com', username: 'uuuu', id: 11, postId: 123 };
+        //this.comment= { body: 'bbbbxxxxxxxxxxxx', email: 'a@b.com', username: 'uuuu', id: 11, postId: 123 };
     }
 
 
@@ -29,6 +34,7 @@ constructor()
     {
         this.submitted = true;
         this.NewComment.emit(this.comment);
+        this.comment = null;
     }
     get diagnostic()
     {

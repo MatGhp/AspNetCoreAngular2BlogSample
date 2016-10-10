@@ -1,33 +1,27 @@
 ﻿<div class="container">
     <h1>Leave a comment</h1>
-    add-comment , Diagnostic : {{diagnostic}}
-    <!--(ngSubmit)="onSubmit(commentForm.form)" #commentForm="ngModel">-->
-    <!--#myForm="ngForm" (ngSubmit)="onSubmit(myForm)">-->
-    <!--<div [hidden]="email.valid || email.pristine" class="alert alert-danger">
-                Email is required
-            </div>-->
+    <p>
+        Diagnostic : {{diagnostic}}
+        form.valid: {{form.valid}}
+        spy: {{spy.className}}
+    </p>
+    <form #form="ngForm" (ngsubmit)="onSubmit">
 
-
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" required
-               name="email" #spy />
-        TODO: remove this: {{spy.className}}
-        TODO: remove this: {{comment.email}}
-
-    </div>
-    <div class="form-group">
-        <label for="username">Your name: </label>
-        <input type="text" class="form-control" id="username" 
-               name="username" />
-        TODO: remove this: {{comment.username}}
-    </div>
-    <div class="form-group">
-        <label for="body">Body</label>
-        <input type="text" class="form-control" id="body"
-               name="body" />
-        TODO: remove this: {{comment.body}}
-    </div>
-    <button type="submit" class="btn btn-default" (click)='onSubmit()'>Submit</button> <!--[disabled]="!commentForm.form.valid"-->
-
+        <div class="form-group" [ngClass]="{ 'has-error': username.invalid && username.touched }" #spy>
+            <input type="text" class="form-control" name="username" required
+                   [(ngModel)]="comment.username" #username="ngModel" placeholder="Username" />
+            <span class="help-block" *ngIf="username.invalid && username.touched">Usename is required</span>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': email.invalid && email.touched}">
+            <input type="text" class="form-control" name="email" required
+                   [(ngModel)]="comment.email" #email="ngModel" placeholder="Email Address" />
+            <span class="help-block" *ngIf="email.invalid && email.touched">Email is required</span>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': body.invalid && body.touched}">
+            <input type="text" class="form-control" name="body" required
+                   [(ngModel)]="comment.body" #body="ngModel" placeholder="Write something here..." />
+            <span class="help-block" *ngIf="body.invalid && body.touched">Write something here...</span>
+        </div>
+        <button type="submit" class="btn btn-lg btn-block btn-primary" [disabled]="form.invalid" (click)="onSubmit()">Submit</button>
+    </form>
 </div>
