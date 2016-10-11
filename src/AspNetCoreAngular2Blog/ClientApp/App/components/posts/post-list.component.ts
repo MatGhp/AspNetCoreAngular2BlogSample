@@ -20,11 +20,21 @@ export class PostListComponent implements ng.OnInit
     constructor(private _postService: PostService)
     { }
 
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         this._postService.getPosts()
-            .subscribe(posts => this.posts = posts,
-            error => this.errorMessage = <any>error);
+            .subscribe((posts) => {
+                    this.posts = <IPost[]>posts;
+                },
+                    (error) => {
+                    this.errorMessage = <any>error;
+                    console.log(error);
+                }
+            );
+    }
+
+  get diagnostic()
+    {
+        return JSON.stringify(this.posts);
     }
 }
 

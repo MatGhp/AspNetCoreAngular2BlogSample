@@ -20,3 +20,4 @@ export interface IPost
     comments: IComment[];
 
 }
+  

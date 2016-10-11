@@ -10,31 +10,29 @@ using Owin;
 
 namespace AspNetCoreAngular2Blog
 {
-    namespace OwinCore
+    public static class OwinExtensions
     {
-        public static class OwinExtensions
+        public static IApplicationBuilder UseOwinApp(
+            this IApplicationBuilder aspNetCoreApp,
+            Action<IAppBuilder> configuration)
         {
-            public static IApplicationBuilder UseOwinApp(
-                this IApplicationBuilder aspNetCoreApp,
-                Action<IAppBuilder> configuration)
+            return aspNetCoreApp.UseOwin(setup => setup(next =>
             {
-                return aspNetCoreApp.UseOwin(setup => setup(next =>
-                {
-                    AppBuilder owinAppBuilder = new AppBuilder();
+                AppBuilder owinAppBuilder = new AppBuilder();
 
-                    IApplicationLifetime aspNetCoreLifetime = (IApplicationLifetime)aspNetCoreApp.ApplicationServices.GetService(typeof(IApplicationLifetime));
+                IApplicationLifetime aspNetCoreLifetime = (IApplicationLifetime)aspNetCoreApp.ApplicationServices.GetService(typeof(IApplicationLifetime));
 
-                    AppProperties owinAppProperties = new AppProperties(owinAppBuilder.Properties);
+                AppProperties owinAppProperties = new AppProperties(owinAppBuilder.Properties);
 
-                    owinAppProperties.OnAppDisposing = aspNetCoreLifetime?.ApplicationStopping ?? CancellationToken.None;
+                owinAppProperties.OnAppDisposing = aspNetCoreLifetime?.ApplicationStopping ?? CancellationToken.None;
 
-                    owinAppProperties.DefaultApp = next;
+                owinAppProperties.DefaultApp = next;
 
-                    configuration(owinAppBuilder);
+                configuration(owinAppBuilder);
 
-                    return owinAppBuilder.Build<Func<IDictionary<string, object>, Task>>();
-                }));
-            }
+                return owinAppBuilder.Build<Func<IDictionary<string, object>, Task>>();
+            }));
         }
     }
+
 }

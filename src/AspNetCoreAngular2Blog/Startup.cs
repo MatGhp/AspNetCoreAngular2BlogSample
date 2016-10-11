@@ -8,9 +8,18 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using AspNetCoreAngular2Blog.Models.ViewModel;
 using AspNetCoreAngular2Blog.Models.DB;
 using Microsoft.EntityFrameworkCore;
 using AspNetCoreAngular2Blog.Migrations;
+using Owin;
+using AspNetCoreAngular2Blog.Middlewares;
+using System.Reflection;
+using System.Web.Http;
+using System.Web.OData.Builder;
+using System.Web.OData.Extensions;
+using Microsoft.Owin.Diagnostics;
+using Newtonsoft.Json.Serialization;
 
 namespace AspNetCoreAngular2Blog
 {
@@ -61,6 +70,36 @@ namespace AspNetCoreAngular2Blog
             }
 
             app.UseStaticFiles();
+
+            app.UseOwinApp(owinApp =>
+            {
+                if (env.IsDevelopment())
+                {
+                    owinApp.UseErrorPage(new ErrorPageOptions()
+                    {
+                        ShowCookies = true,
+                        ShowEnvironment = true,
+                        ShowExceptionDetails = true,
+                        ShowHeaders = true,
+                        ShowQuery = true,
+                        ShowSourceCode = true
+                    });
+                }
+
+                var webApiConfig = new HttpConfiguration();
+                var odataMetadataBuilder = new ODataConventionModelBuilder();
+                odataMetadataBuilder.EntitySet<Post>("Posts");
+                odataMetadataBuilder.EnableLowerCamelCase();
+                webApiConfig.MapODataServiceRoute(
+                    routeName: "ODataRoute",
+                    routePrefix: "odata",
+                    model: odataMetadataBuilder.GetEdmModel());
+                owinApp.UseWebApi(webApiConfig);
+
+                owinApp.MapSignalR();
+            });
+
+
 
             app.UseMvc(routes =>
             {

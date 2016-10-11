@@ -8,65 +8,37 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PostService
 {
-    private _postUrl = '/api/posts';
-    //private _commentUrl = '/api/comment';
+    private _postUrl = '/odata/Posts'; //'/api/posts';
     public posts: IPost[];
     constructor(private _http: Http)
     {
 
     }
-    getPosts(): Observable<IPost[]>
-    {
+    getPosts(): Observable<IPost[]> {
         return this._http.get(this._postUrl)
-            .map((response: Response) => <IPost[]>response.json())
-            .do(data => console.log("All : " + JSON.stringify(data)))
+            .map(this.extractData)
             .catch(this.HandelError);
     }
 
     getPost(postId: number): Observable<IPost>
     {
-        return this._http.get(`/api/posts/${postId}`)
-            .map((response: Response) => <IPost>response.json())
-            .do(data => console.log("All : " + JSON.stringify(data)))
+        return this._http.get(`${this._postUrl}/${postId}`)
+            .map(this.extractData)
+            .do(data => console.log("All : " + data))
             .catch(this.HandelError);
     }
 
 
-    //getComments
+   
 
-    private extractData(res: Response)
-    {
-        let body = res.json();
-        return body.data || {};
-    }
+    private extractData(res: Response) {
+    let body = res.json();
+    return body.value || { };
+  }
 
-    private HandelError(error: Response)
+    private HandelError(error: any)
     {
         console.log(error);
-        return Observable.throw(error.json().error || 'Server Error');
+        return Observable.throw(error); //.json().error || 'Server Error');
     }
-
-    //getPosts(): IPost[]
-    //{
-    //    return [
-    //        {
-    //            "id": 1,
-    //            "title": "Title 1...",
-    //            "body": "body text 1 ....",
-    //            "userId": "11",
-    //            "username": "John",
-    //            "email": "john@gmail.com"
-
-    //        },
-    //        {
-    //            "id": 2,
-    //            "title": "Title 2..",
-    //            "body": "body text 2....",
-    //            "userId": "12",
-    //            "username": "David",
-    //            "email": "david@yahoo.com"
-    //        }
-    //    ];
-    //}
-
 }
