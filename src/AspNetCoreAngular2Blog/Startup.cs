@@ -71,14 +71,14 @@ namespace AspNetCoreAngular2Blog
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            ConfigureAuth(app);
+            
             app.UseStaticFiles();
 
             app.UseOwinApp(owinApp =>
             {
                 if (env.IsDevelopment())
                 {
-                    owinApp.UseErrorPage(new ErrorPageOptions()
+                    owinApp.UseErrorPage(new ErrorPageOptions
                     {
                         ShowCookies = true,
                         ShowEnvironment = true,
@@ -102,7 +102,7 @@ namespace AspNetCoreAngular2Blog
                 owinApp.MapSignalR();
             });
 
-
+            ConfigureAuth(app);
 
             app.UseMvc(routes =>
             {

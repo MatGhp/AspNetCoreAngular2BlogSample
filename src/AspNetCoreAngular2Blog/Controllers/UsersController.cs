@@ -29,6 +29,7 @@ namespace AspNetCoreAngular2Blog.Controllers
 
         // POST api/values
         [Microsoft.AspNetCore.Mvc.HttpPost]
+        [Authorize]
         public void Post([Microsoft.AspNetCore.Mvc.FromBody]string value)
         {
         }

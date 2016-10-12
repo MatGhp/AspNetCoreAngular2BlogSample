@@ -15,15 +15,16 @@ namespace AspNetCoreAngular2Blog
     {
         // The secret key every token will be signed with.
         // Keep this safe on the server!
+        //private static readonly string secretKey = "mysupersecret_secretkey!123";
         private static readonly string secretKey = "mysupersecret_secretkey!123";
-
+        
         private void ConfigureAuth(IApplicationBuilder app)
         {
             var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
 
             app.UseSimpleTokenProvider(new TokenProviderOptions
             {
-                Path = "/api/token",
+               
                 Audience = "ExampleAudience",
                 Issuer = "ExampleIssuer",
                 SigningCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256),
@@ -58,16 +59,16 @@ namespace AspNetCoreAngular2Blog
                 TokenValidationParameters = tokenValidationParameters
             });
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                AuthenticationScheme = "Cookie",
-                CookieName = "access_token",
-                TicketDataFormat = new CustomJwtDataFormat(
-                    SecurityAlgorithms.HmacSha256,
-                    tokenValidationParameters)
-            });
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions
+            //{
+            //    AutomaticAuthenticate = true,
+            //    AutomaticChallenge = true,
+            //    AuthenticationScheme = "Cookie",
+            //    CookieName = "access_token",
+            //    TicketDataFormat = new CustomJwtDataFormat(
+            //        SecurityAlgorithms.HmacSha256,
+            //        tokenValidationParameters)
+            //});
         }
 
         private Task<ClaimsIdentity> GetIdentity(string username, string password)
