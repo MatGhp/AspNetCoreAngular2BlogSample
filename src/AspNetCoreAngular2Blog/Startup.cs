@@ -21,10 +21,13 @@ using System.Web.OData.Extensions;
 using Microsoft.Owin.Diagnostics;
 using Newtonsoft.Json.Serialization;
 
+
 namespace AspNetCoreAngular2Blog
 {
-    public class Startup
+    public partial class Startup
     {
+        
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -68,7 +71,7 @@ namespace AspNetCoreAngular2Blog
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            ConfigureAuth(app);
             app.UseStaticFiles();
 
             app.UseOwinApp(owinApp =>
