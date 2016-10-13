@@ -1,7 +1,5 @@
 ﻿import {Component, Input, Output, OnChanges, EventEmitter} from '@angular/core';
 import {IComment} from '../../models/blog.model';
-//import { NgForm, Validators } from '@angular/forms';
-//import Bootclient = require("../../../boot-client");
 
 @
 Component({
@@ -12,7 +10,7 @@ styles:[`form {
     background: #ECF0F1;
     border-radius: 3px;
 }`]
-    //styles: require('../shared/forms.css')
+
 })
 export class AddCommentComponent{
     @Input()

@@ -1,0 +1,33 @@
+﻿<!--FormBuilder-->
+<legend>Login</legend>
+<div class="col-md-6 col-md-offset-3">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+            <label for="name" class="control-label">Email</label>
+            <input type="text" id="email" name="email" class="form-control ng-valid" 
+                   placeholder="Email" [formControl]="email" />
+            <div [hidden]="email.valid || email.untouched">
+                <div [hidden]="!email.hasError('minlength')">Email can not be shorter than 5 character</div>
+                <div [hidden]="!email.hasError('required')" class="has-error">Email is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control"
+                   placeholder="Password"
+                   [formControl]="password" />
+            
+            <div [hidden]="password.valid || password.untouched">
+                <div [hidden]="!password.hasError('required')">Password is required</div>
+                <div [hidden]="!password.hasError('ampersandRequired')">Password must have &</div>
+                <div [hidden]="!password.hasError('ausrufezeichenRequired')">Password must have !</div>
+
+                
+            </div>
+        </div>
+
+        <div class="form-group form-control-btn">
+            <button type="submit" class="btn btn-block" [disabled]="!loginForm.valid">Log in</button>
+        </div>
+    </form>
+</div>
