@@ -15,6 +15,4 @@ export class SignupFormComponent {
         onSubmit(form : any){
             console.log(form.value);
         }
-
-
 }
