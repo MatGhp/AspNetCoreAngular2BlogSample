@@ -14,7 +14,7 @@ import { SignupFormComponent } from './components/users/signup-form.component';
 import { LoginFormComponent } from './components/users/login-form.component';
 
 import {PostService} from './services/post.service';
-import {UserService} from './services/user.service';
+import {UserService} from './components/users/user.service';
 
 @NgModule({
     bootstrap: [ AppComponent ],

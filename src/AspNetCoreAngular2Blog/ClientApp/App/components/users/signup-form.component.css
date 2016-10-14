@@ -1,4 +1,5 @@
-﻿form {
+﻿@import url('../shared/forms.css');
+form {
     padding: 10px;
     margin: 20px;
     background: #ECF0F1;
