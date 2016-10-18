@@ -20,11 +20,13 @@ export class AdminService {
             .map(response => response.json())
             .catch(this.HandelError);
     }
-    searchUsers(searchString : string): Observable<IUser[]> {
+
+ searchUsers(searchString : string): Observable<IUser[]> {
         return this._http.get(`${this._adminUrl}/SearchUsers?SearchPattern=${searchString}`)
             .map(response => response.json())
             .catch(this.HandelError);
     }
+
     //getUser(userId: number): Observable<IUser>
     //{
     //    return this._http.get(`${this._adminUrl}/${userId}`)

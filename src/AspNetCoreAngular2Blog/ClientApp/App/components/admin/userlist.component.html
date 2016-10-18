@@ -4,17 +4,18 @@
         <div id="custom-search-input">
             <div class="col-md-4"></div>
             <div class="input-group col-md-3">
-                <input type="text" class="search-query form-control" placeholder="Search" [(ngModel)]="searchString"/>
-                <span class="input-group-btn">
+                <input type="text" #searchBox class="search-query form-control" placeholder="Search" [(ngModel)]="searchString" (keyup)="searchUsers(searchBox.value)"/>
+                <!--<span class="input-group-btn">
                     <button class="btn btn-danger" type="button" (click)="searchUsers()">
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
-                </span>
+                </span>-->
             </div>
             <div class="col-md-5"></div>
         </div>
     </div>
 </div>
+
 <legend>Users list</legend>
 
 <div *ngFor="let user of users; let i=index;let isOdd=odd">

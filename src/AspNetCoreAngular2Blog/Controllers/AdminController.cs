@@ -85,7 +85,7 @@ namespace AspNetCoreAngular2Blog.Controllers
             return _users.FirstOrDefault(u => u.Id == id);
         }
 
-        // GET api/SearchUsers?SearchPattern=XXX
+        // GET api/admin/SearchUsers?SearchPattern=XXX
         [Microsoft.AspNetCore.Mvc.HttpGet("SearchUsers")]
         public IList<User> SearchUsers([Microsoft.AspNetCore.Mvc.FromQuery] string SearchPattern)
         {
