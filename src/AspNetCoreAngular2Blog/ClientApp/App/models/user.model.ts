@@ -10,8 +10,8 @@
 
 export interface IUserProfile {
     id: number;
-    email : string;
+    email: string;
     firstname: string;
-lastname: string;
+    lastname: string;
 }
 

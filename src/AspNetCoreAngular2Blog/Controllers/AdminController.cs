@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreAngular2Blog.Models.DB;
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AspNetCoreAngular2Blog.Controllers
 {
-
-    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
-    public class UsersController : Controller
+    [Route("api/[controller]")]
+    public class AdminController : Controller
     {
         private List<User> _users = new List<User>
         {
@@ -21,7 +19,7 @@ namespace AspNetCoreAngular2Blog.Controllers
                 Email = "sasha@dff.com",
                 Firstname = "Sasha",
                 Lastname = "Licht",
-                Birthdate = DateTime.Parse("12.12.1970"),
+                Birthdate = new DateTime(2008, 3, 9),
                 Password = "123"
             },
             new User
@@ -30,7 +28,7 @@ namespace AspNetCoreAngular2Blog.Controllers
                 Email = "ervin@gfg.com",
                 Firstname = "Alex",
                 Lastname = "Joe",
-                Birthdate = DateTime.Parse("01.01.2000"),
+                Birthdate = new DateTime(2000,5,11),
                 Password = "123"
             },
             new User
@@ -39,7 +37,7 @@ namespace AspNetCoreAngular2Blog.Controllers
                 Email = "david@gmail.com",
                 Firstname = "David",
                 Lastname = "Doe",
-                Birthdate = DateTime.Parse("10.04.1983"),
+                Birthdate = new DateTime(1990,5,11),
                 Password = "123"
             },
             new User
@@ -48,7 +46,7 @@ namespace AspNetCoreAngular2Blog.Controllers
                 Email = "george@yahoo.com",
                 Firstname = "Bill",
                 Lastname = "Gates",
-                Birthdate = DateTime.Parse("21.05.1993"),
+                Birthdate = new DateTime(1988,8,21),
                 Password = "123"
             },
             new User
@@ -57,7 +55,7 @@ namespace AspNetCoreAngular2Blog.Controllers
                 Email = "sara@live.com",
                 Firstname = "Sara",
                 Lastname = "McManaman",
-                Birthdate = DateTime.Parse("14.08.1981"),
+                Birthdate = new DateTime(1978,2,2),
                 Password = "123"
             },
             new User
@@ -66,24 +64,42 @@ namespace AspNetCoreAngular2Blog.Controllers
                 Email = "jacob@microsoft.com",
                 Firstname = "Jacob",
                 Lastname = "Mayer",
-                Birthdate = DateTime.Parse("25.03.2000"),
+                 Birthdate = new DateTime(1950,3,1),
                 Password = "123"
             },
         };
 
-        
+
+        // GET: api/values
+        [HttpGet]
+        public IEnumerable<User> Get()
+        {
+            return _users;
+        }
+
 
         // GET api/values/5
         [Microsoft.AspNetCore.Mvc.HttpGet("{id}")]
-        [Authorize]
         public User Get(int id)
         {
             return _users.FirstOrDefault(u => u.Id == id);
         }
 
+        // GET api/SearchUsers?SearchPattern=XXX
+        [Microsoft.AspNetCore.Mvc.HttpGet("SearchUsers")]
+        public IList<User> SearchUsers([Microsoft.AspNetCore.Mvc.FromQuery] string SearchPattern)
+        {
+            if(!string.IsNullOrWhiteSpace(SearchPattern ))
+            return _users.Where(u => u.Firstname.ToLower().Contains(SearchPattern.ToLower()) || u.Lastname.ToLower().Contains(SearchPattern.ToLower())).ToList();
+            else
+            {
+
+                return null;
+            }
+        }
+
         // POST api/values
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        [Authorize]
         public void Post([Microsoft.AspNetCore.Mvc.FromBody]User user)
         {
             _users.Add(user);
@@ -93,7 +109,7 @@ namespace AspNetCoreAngular2Blog.Controllers
         [Microsoft.AspNetCore.Mvc.HttpPut("{id}")]
         public void Put(int id, [Microsoft.AspNetCore.Mvc.FromBody]User user)
         {
-            
+
         }
 
         // DELETE api/values/5

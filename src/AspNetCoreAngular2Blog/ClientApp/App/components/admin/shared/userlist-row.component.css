@@ -1,0 +1,35 @@
+@import url('../../shared/forms.css');
+:host.odd {
+    display: block;
+    background-color: #eee;
+}
+
+.userrow {
+    height: 130px;
+    border: 1px;
+    border-radius: 7px;
+    background-color: #eee;
+    margin: 2px 0 0 5px;
+    color: #005ea8;
+    cursor: pointer;
+}
+
+div.userrow :hover {
+   
+    background-color: #6495ed;
+   
+}
+
+div.userrow :not( :hover ) {
+   
+    background-color: #eee;
+   
+}
+
+
+.details {
+    
+}
+.photo{}
+
+.expand{}

@@ -1,6 +1,5 @@
 ﻿import * as ng from '@angular/core';
 import { Http, Response } from '@angular/http';
-//import {ROUTER_DIRECTIVES} from '@angular/router';
 import {PostService} from '../../services/post.service';
 import {IPost} from '../../models/blog.model';
 

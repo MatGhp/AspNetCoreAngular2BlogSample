@@ -1,0 +1,47 @@
+﻿<!--FormBuilder-->
+<div class="container">
+    <div class="row">
+        <div id="custom-search-input">
+            <div class="col-md-4"></div>
+            <div class="input-group col-md-3">
+                <input type="text" class="search-query form-control" placeholder="Search" [(ngModel)]="searchString"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button" (click)="searchUsers()">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </div>
+</div>
+<legend>Users list</legend>
+
+<div *ngFor="let user of users; let i=index;let isOdd=odd">
+    <div class="userrow">
+        <div class="container">
+            <div class="row">
+
+                <div class="user-info col-lg-6">
+
+                    <div>
+                        {{user.firstname}} - {{user.lastname}}
+                    </div>
+                    <div>
+                        email : {{user.email}}
+                    </div>
+
+                    <div>
+                        Birthdate : {{user.birthdate}}
+                    </div>
+                </div>
+                <div class="user-photo col-lg-3">
+                    <img src="" alt="Users photo" />
+                </div>
+                <div class="user-details col-lg-3">
+                    <a class="btn btn-default">More Info >> </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
