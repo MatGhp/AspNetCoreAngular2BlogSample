@@ -67,6 +67,222 @@ namespace AspNetCoreAngular2Blog.Controllers
                  Birthdate = new DateTime(1950,3,1),
                 Password = "123"
             },
+            new User
+            {
+                Id = 1,
+                Email = "sasha@dff.com",
+                Firstname = "Sasha",
+                Lastname = "Licht",
+                Birthdate = new DateTime(2008, 3, 9),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 2,
+                Email = "ervin@gfg.com",
+                Firstname = "Alex",
+                Lastname = "Joe",
+                Birthdate = new DateTime(2000,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 3,
+                Email = "david@gmail.com",
+                Firstname = "David",
+                Lastname = "Doe",
+                Birthdate = new DateTime(1990,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 4,
+                Email = "george@yahoo.com",
+                Firstname = "Bill",
+                Lastname = "Gates",
+                Birthdate = new DateTime(1988,8,21),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 5,
+                Email = "sara@live.com",
+                Firstname = "Sara",
+                Lastname = "McManaman",
+                Birthdate = new DateTime(1978,2,2),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 6,
+                Email = "jacob@microsoft.com",
+                Firstname = "Jacob",
+                Lastname = "Mayer",
+                 Birthdate = new DateTime(1950,3,1),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 1,
+                Email = "sasha@dff.com",
+                Firstname = "Sasha",
+                Lastname = "Licht",
+                Birthdate = new DateTime(2008, 3, 9),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 2,
+                Email = "ervin@gfg.com",
+                Firstname = "Alex",
+                Lastname = "Joe",
+                Birthdate = new DateTime(2000,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 3,
+                Email = "david@gmail.com",
+                Firstname = "David",
+                Lastname = "Doe",
+                Birthdate = new DateTime(1990,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 4,
+                Email = "george@yahoo.com",
+                Firstname = "Bill",
+                Lastname = "Gates",
+                Birthdate = new DateTime(1988,8,21),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 5,
+                Email = "sara@live.com",
+                Firstname = "Sara",
+                Lastname = "McManaman",
+                Birthdate = new DateTime(1978,2,2),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 6,
+                Email = "jacob@microsoft.com",
+                Firstname = "Jacob",
+                Lastname = "Mayer",
+                 Birthdate = new DateTime(1950,3,1),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 1,
+                Email = "sasha@dff.com",
+                Firstname = "Sasha",
+                Lastname = "Licht",
+                Birthdate = new DateTime(2008, 3, 9),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 2,
+                Email = "ervin@gfg.com",
+                Firstname = "Alex",
+                Lastname = "Joe",
+                Birthdate = new DateTime(2000,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 3,
+                Email = "david@gmail.com",
+                Firstname = "David",
+                Lastname = "Doe",
+                Birthdate = new DateTime(1990,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 4,
+                Email = "george@yahoo.com",
+                Firstname = "Bill",
+                Lastname = "Gates",
+                Birthdate = new DateTime(1988,8,21),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 5,
+                Email = "sara@live.com",
+                Firstname = "Sara",
+                Lastname = "McManaman",
+                Birthdate = new DateTime(1978,2,2),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 6,
+                Email = "jacob@microsoft.com",
+                Firstname = "Jacob",
+                Lastname = "Mayer",
+                 Birthdate = new DateTime(1950,3,1),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 1,
+                Email = "sasha@dff.com",
+                Firstname = "Sasha",
+                Lastname = "Licht",
+                Birthdate = new DateTime(2008, 3, 9),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 2,
+                Email = "ervin@gfg.com",
+                Firstname = "Alex",
+                Lastname = "Joe",
+                Birthdate = new DateTime(2000,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 3,
+                Email = "david@gmail.com",
+                Firstname = "David",
+                Lastname = "Doe",
+                Birthdate = new DateTime(1990,5,11),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 4,
+                Email = "george@yahoo.com",
+                Firstname = "Bill",
+                Lastname = "Gates",
+                Birthdate = new DateTime(1988,8,21),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 5,
+                Email = "sara@live.com",
+                Firstname = "Sara",
+                Lastname = "McManaman",
+                Birthdate = new DateTime(1978,2,2),
+                Password = "123"
+            },
+            new User
+            {
+                Id = 6,
+                Email = "jacob@microsoft.com",
+                Firstname = "Jacob",
+                Lastname = "Mayer",
+                 Birthdate = new DateTime(1950,3,1),
+                Password = "123"
+            }
         };
 
 

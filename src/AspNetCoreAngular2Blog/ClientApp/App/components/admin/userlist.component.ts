@@ -1,4 +1,4 @@
-﻿import {Component,OnInit, OnChanges} from '@angular/core';
+﻿import {Component,OnInit, OnChanges, AfterViewChecked, HostListener} from '@angular/core';
 import { Http, Response } from '@angular/http';
 import {IUser,IUserProfile} from '../../models/user.model';
 import {AdminService} from './admin.service';
@@ -11,49 +11,60 @@ Component({
     styles: [require('./userlist.component.css')]
 //entryComponents : [UserListRowComponent]
 })
-export class UserListComponent{
+export class UserListComponent implements OnInit {
     public pageTitle: string = "User Management";
     errorMessage: string;
-    public users : IUser[];
-    
+
+    public sourceData: IUser[];
+    public displayData: IUser[];
 
 
-public searchString: string;
+    public searchString: string;
 
     constructor(private _adminService: AdminService) {
-        this.searchString = "";
-        this._adminService.getUsers()
-            .subscribe((users) => {
-                    this.users = <IUser[]>users;
-                    console.log(users);
-                },
-                (error) => {
-                    this.errorMessage = <any>error;
-                    console.log(error);
-                }
-            );
+
     }
 
-    searchUsers(input : string) {
+    ngOnInit(): void {
+        this.searchString = "";
+        this.sourceData = [];
+        this.displayData = [];
+        this.loadAllUsers();
+    }
 
-        console.log('Searching: ' + input);
-        this._adminService.searchUsers(input)
+    loadAllUsers() {
+        this._adminService.getUsers()
             .subscribe((users) => {
-                    this.users = <IUser[]>users;
-                    console.log(users);
+                    this.sourceData = <IUser[]>users;
                 },
                 (error) => {
                     this.errorMessage = <any>error;
                     console.log(error);
                 }
             );
-        console.log('Searched: ' + JSON.stringify(this.users));
+
+    }
+
+    searchUsers(input: string) {
+        if (input != '') {
+            console.log('Searching: ' + input);
+            this._adminService.searchUsers(input)
+                .subscribe((users) => {
+                        this.sourceData = <IUser[]>users;
+                    },
+                    (error) => {
+                        this.errorMessage = <any>error;
+                        console.log(error);
+                    }
+                );
+            console.log('Searched: ' + JSON.stringify(this.sourceData));
+        } else {
+            this.loadAllUsers();
+        }
     }
 
 
     get diagnostic() {
-        return JSON.stringify(this.users);
+        return JSON.stringify(this.sourceData);
     }
-
-   
 }
