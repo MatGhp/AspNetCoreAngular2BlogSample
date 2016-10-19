@@ -27,6 +27,7 @@ import { UserListComponent } from './components/admin/userlist.component';
 import { UserlistRowComponent} from './components/admin/shared/userlist-row.component';
 
 import { MyLazyLoaderDirective} from './components/shared/infinit-scroll.directive';
+import { FormInputDorective} from './components/shared/form-input.directive';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -42,7 +43,8 @@ import { MyLazyLoaderDirective} from './components/shared/infinit-scroll.directi
         UserlistRowComponent,
 SignupFormComponent,
 LoginFormComponent,
-MyLazyLoaderDirective
+MyLazyLoaderDirective,
+FormInputDorective
     ],
     providers: [PostService, AdminService,UserService],
     imports: [
