@@ -4,6 +4,12 @@ import {IUser,IUserProfile} from '../../models/user.model';
 import {AdminService} from './admin.service';
 import {UserlistRowComponent} from './shared/userlist-row.component';
 import {Subject} from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+
+
 @
 Component({
     selector: 'user-list',
@@ -22,45 +28,50 @@ export class UserListComponent implements OnInit {
     searchTerm$ = new Subject<string>();
 
     constructor(private _adminService: AdminService) {
-this.searchTerm$.subscribe(term=> this.searchUsers(term));
+        loadAllUsers();
+        this.searchTerm$
+            .debounceTime(600)
+            .distinctUntilChanged()
+            .switchMap(term => term.length > 0 ? this._adminService.searchUsers(term) : this._adminService.getUsers())
+            .subscribe(users => this.sourceData = <IUser[]>users);
     }
 
     ngOnInit(): void {
         this.sourceData = [];
         this.displayData = [];
-        this.loadAllUsers();
+        
     }
 
-    loadAllUsers() {
-        this._adminService.getUsers()
-            .subscribe((users) => {
-                    this.sourceData = <IUser[]>users;
-                },
-                (error) => {
-                    this.errorMessage = <any>error;
-                    console.log(error);
-                }
-            );
+     loadAllUsers() {
+         this._adminService.getUsers()
+             .subscribe((users) => {
+                     this.sourceData = <IUser[]>users;
+                 },
+                 (error) => {
+                     this.errorMessage = <any>error;
+                     console.log(error);
+                 }
+             );
+    
+     }
 
-    }
-
-    searchUsers(input: string) {
-        if (input != '') {
-            console.log('Searching: ' + input);
-            this._adminService.searchUsers(input)
-                .subscribe((users) => {
-                        this.sourceData = <IUser[]>users;
-                    },
-                    (error) => {
-                        this.errorMessage = <any>error;
-                        console.log(error);
-                    }
-                );
-            console.log('Searched: ' + JSON.stringify(this.displayData));
-        } else {
-            this.loadAllUsers();
-        }
-    }
+    //searchUsers(input: string) {
+    //    if (input != '') {
+    //        console.log('Searching: ' + input);
+    //        this._adminService.searchUsers(input)
+    //            .subscribe((users) => {
+    //                    this.sourceData = <IUser[]>users;
+    //                },
+    //                (error) => {
+    //                    this.errorMessage = <any>error;
+    //                    console.log(error);
+    //                }
+    //            );
+    //        console.log('Searched: ' + JSON.stringify(this.displayData));
+    //    } else {
+    //        this.loadAllUsers();
+    //    }
+    //}
 
 
     get diagnostic() {
