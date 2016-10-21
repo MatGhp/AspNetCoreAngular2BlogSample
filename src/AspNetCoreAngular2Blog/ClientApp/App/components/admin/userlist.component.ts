@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import {IUser,IUserProfile} from '../../models/user.model';
 import {AdminService} from './admin.service';
 import {UserlistRowComponent} from './shared/userlist-row.component';
-
+import {Subject} from 'rxjs/Subject';
 @
 Component({
     selector: 'user-list',
@@ -19,14 +19,13 @@ export class UserListComponent implements OnInit {
     public displayData: IUser[];
 
 
-    public searchString: string;
+    searchTerm$ = new Subject<string>();
 
     constructor(private _adminService: AdminService) {
-
+this.searchTerm$.subscribe(term=> this.searchUsers(term));
     }
 
     ngOnInit(): void {
-        this.searchString = "";
         this.sourceData = [];
         this.displayData = [];
         this.loadAllUsers();
@@ -57,7 +56,7 @@ export class UserListComponent implements OnInit {
                         console.log(error);
                     }
                 );
-            console.log('Searched: ' + JSON.stringify(this.sourceData));
+            console.log('Searched: ' + JSON.stringify(this.displayData));
         } else {
             this.loadAllUsers();
         }

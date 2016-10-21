@@ -4,7 +4,8 @@
         <div id="custom-search-input">
             <div class="col-md-4"></div>
             <div class="input-group col-md-3">
-                <input type="text" #searchBox class="search-query form-control" placeholder="Search" [(ngModel)]="searchString" (keyup)="searchUsers(searchBox.value)" />
+                <input type="text" class="search-query form-control" placeholder="Search" 
+                       (input)="searchTerm$.next($event.target.value)" />
                 <!--<span class="input-group-btn">
                     <button class="btn btn-danger" type="button" (click)="searchUsers()">
                         <span class="glyphicon glyphicon-search"></span>
@@ -17,10 +18,10 @@
 </div>
 
 <legend>Users list</legend>
-<div *ngIf="sourceData.length > 0" my-lazy-loader
+<div> <!--*ngIf="sourceData.length > 0" my-lazy-loader
      [sourceData]="sourceData"
-     [displayData]="displayData">
-    <div *ngFor="let user of displayData">
+     [displayData]="displayData">-->
+    <div *ngFor="let user of sourceData">
         <div class="userrow">
             <div class="container">
                 <div class="row">
